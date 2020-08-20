@@ -2,9 +2,9 @@
 {% block content %}
 <div class="col-xl-8 py-5 px-md-5">
     <div class="row pt-md-4">
-					<h1>All Projects</h1>
+					<h1>{{ category.title }}</h1>
 
-    {% for product in products.all %}
+    {% for product in projectsCat.all %}
             <div class="col-md-12">
                 <div class="blog-entry ftco-animate d-md-flex">
                     <a href="{% url 'detail' product.id %}" class="img img-2" style="background-image: url({{product.image.url}});"></a>

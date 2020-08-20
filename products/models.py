@@ -7,7 +7,6 @@ from django.urls import reverse
 
 class Category(models.Model):
     title = models.CharField(max_length = 255)
-
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
@@ -22,11 +21,11 @@ class Product(models.Model):
     title = models.CharField(max_length=20)
     pub_date =  models.DateTimeField()
     body =  models.TextField()
+    author = models.CharField(max_length=20, null =True, blank = True)
     url =  models.TextField()
     image = models.ImageField(upload_to='images/')
-    icon = models.ImageField(upload_to='images/')
     votes_total= models.IntegerField(default=1)
-    hunter = models.ForeignKey(User, on_delete=models.CASCADE, default='diego' )
+    hunter = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE ,null=True, default='1')
     
   

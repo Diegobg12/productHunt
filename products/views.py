@@ -14,6 +14,11 @@ def home(request):
 def about(request):
     return render(request, 'products/about.html')
 
+def catView(request):
+    category = get_object_or_404(category, category=category_id).all()
+    projectsCat = get_object_or_404(Product, category=category_id).all()
+    return render(request, 'products/catView.html', {'projectsCat':projectsCat, category:'category'})
+
 @login_required
 def create(request):
     if request.method == 'POST':
@@ -41,7 +46,7 @@ def create(request):
 
 def detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    return render(request, 'products/detail.html', {'product':product})
+    return render(request, 'products/single.html', {'product':product})
 
 @login_required(login_url="/accounts/signup")
 def upvote(request, product_id):

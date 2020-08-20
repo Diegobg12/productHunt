@@ -1,0 +1,20 @@
+{% extends 'base copy.html' %}
+{% load static %}
+
+{% block content %}
+	    			<div class="col-lg-8 px-md-5 py-5">
+	    				<div class="row pt-md-4">
+							<h1 class="mb-3"><a href="{{ product.url }}">{{ product.title }}</a></h1>
+							<img src="{{product.image.url}}" class="img-fluid" alt="">
+							<br>
+							<p class="meta mt-8">
+								<span><i class="icon-calendar mr-2"></i>{{ product.pub_date_short }}</span>
+								<span><a href="{% url 'detail' product.id %}"><i class="icon-folder-o mr-2"></i>{{ product.category }}</a></span>
+								<span><a href="{% url 'detail' product.id %}"><i class="icon-user-o mr-2"></i>{{ product.author }}</a></span>
+								<span><a href="{% url 'detail' product.id %}">Posted by {{ product.hunter }}</a></span>
+							</p>
+							<p>{{ product.body}}</p>
+							<a href="javascript:{document.getElementById('upvote{{ product.id }}').submit()}"><button class="btn-custom"> Upvote {{ product.votes_total}}</button></a>
+							</div>
+			    	</div>
+{% endblock %}
